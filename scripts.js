@@ -5,7 +5,7 @@ let sounds = ["Clap", "Hihat", "Kick", "Openhat", "Boom", "Ride", "Snare",
 const measures = document.querySelector("#measures");
 const extras = document.querySelector("#extras");
 
-let tempo = 60;
+let tempo = 180;
 
 let element;
 
@@ -37,8 +37,18 @@ for (i=0;i<4;i++) {
 }
 
 // Play sounds
-startButton = document.querySelector("#start-button");
+startButton = document.querySelector(".start-button");
 startButton.addEventListener("click", function() {
+	// Set to stop button
+	startButton.classList.add("stop-button");
+	startButton.classList.remove("start-button");
+	startButton.innerHTML = "STOP";
+	startButton.addEventListener("click", function() {
+		startButton.innerHTML = "START";
+		startButton.classList.remove("stop-button");
+		startButton.classList.add("start-button");
+	});
+
 	// Get note text
 	let notes = Array.from(measures.children);
 	let notesText = [];
@@ -53,9 +63,16 @@ startButton.addEventListener("click", function() {
 	let timeInterval = 1000 / tempoMultiplier;
 
 	soundsAudio = document.querySelectorAll("audio");
-	for (let i=0;i<notesIndices.length;i++) {
-		setTimeout(function() {
-			console.log(soundsAudio.item(notesIndices[i]).play());
-		}, timeInterval * i);
-	}
+	let i=0
+	setInterval(function() {
+		soundsAudio.item(notesIndices[i]).currentTime = 0;
+		soundsAudio.item(notesIndices[i]).play();
+		console.log(i)
+		console.log(notesIndices.length - 1)
+		i++;
+		if (i==notesIndices.length) {
+			i = 0;
+		}
+		if (startButton.innerHTML == "START") clearInterval();
+	}, timeInterval);
 });

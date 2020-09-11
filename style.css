@@ -23,7 +23,6 @@ body {
 
 
 button {
-	background-color: #96bb7c;
   	color: white;
   	padding: 16px;
   	font-size: 16px;
@@ -31,6 +30,10 @@ button {
   	border: solid;
   	border-top: 2px;
   	border-color: #f5f1da;
+}
+
+.sound-box {
+	background-color: #96bb7c;
 }
 
 .top {
@@ -41,7 +44,7 @@ button {
 	background-color: #7a9964;
 }
 
-#extras button:hover {
+.start-button:hover {
 	background-color: #7a9964;
 }
 
@@ -63,4 +66,16 @@ button {
 	font-size: 48px;
 	background-color: #96bb7c;
 	color: white;
+}
+
+.stop-button {
+	background-color: red;
+}
+
+.stop-button:hover {
+	background-color: darkred;
+}
+
+.start-button {
+	background-color: #96bb7c;
 }
