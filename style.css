@@ -12,7 +12,11 @@
 	min-height: 20vh;
 }
 
-#metronome {
+#extra {
 	border-style: solid;
 	min-height: 20vh;
+	margin-bottom: 5vh;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
 }
