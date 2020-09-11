@@ -1,22 +1,57 @@
 /* Skeleton */
+body {
+	background-color: white;
+}
+
 #measures {
-	border-style: solid;
-	min-height: 20vh;
-	margin-bottom: 5vh;
+	min-height: 50vh;
+	margin-bottom: 30vh;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
+	align-items: center;
 }
 
-.note-box {
+#extras {
 	min-height: 20vh;
-}
-
-#extra {
-	border-style: solid;
-	min-height: 20vh;
-	margin-bottom: 5vh;
+	margin-bottom: 30vh;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
+	align-items: center;
+}
+
+
+button {
+	background-color: #96bb7c;
+  	color: white;
+  	padding: 16px;
+  	font-size: 16px;
+  	min-width: 25vw;
+  	border: solid;
+  	border-top: 2px;
+  	border-color: white;
+}
+
+.top {
+	background-color: #eebb4d;
+}
+
+.sound-dropdown-box p {
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+}
+
+.sound-dropdown-box {
+	display: none;
+	position: relative;
+}
+
+.note-box:hover .sound-dropdown-box {
+	display: block;
+}
+
+.extra {
+	min-height: 20vh;
 }
