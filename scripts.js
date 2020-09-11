@@ -24,6 +24,11 @@ for (i=0;i<4;i++) {
 		soundElement = document.createElement("button")
 		soundElement.innerHTML = sounds[k];
 		soundElement.classList.add("sound-box");
+
+		soundElement.addEventListener("click", function() {
+			this.parentElement.parentElement.firstChild.innerHTML = this.innerHTML;
+		});
+
 		soundDiv.appendChild(soundElement);
 	}
 	outerDiv.appendChild(element);
