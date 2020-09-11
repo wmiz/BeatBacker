@@ -35,14 +35,3 @@ for (i=0;i<4;i++) {
 	outerDiv.appendChild(soundDiv);
 	measures.appendChild(outerDiv);
 }
-
-// Populate extras
-element = document.createElement("input")
-element.classList.add("extra");
-extras.appendChild(element);
-
-element = document.createElement("button")
-element.innerHTML = "START";
-element.classList.add("extra");
-extras.appendChild(element);
-

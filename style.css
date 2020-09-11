@@ -1,6 +1,6 @@
 /* Skeleton */
 body {
-	background-color: white;
+	background-color: #f5f1da;
 }
 
 #measures {
@@ -30,7 +30,7 @@ button {
   	min-width: 25vw;
   	border: solid;
   	border-top: 2px;
-  	border-color: white;
+  	border-color: #f5f1da;
 }
 
 .top {
