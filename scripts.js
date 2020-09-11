@@ -37,42 +37,50 @@ for (i=0;i<4;i++) {
 }
 
 // Play sounds
-startButton = document.querySelector(".start-button");
-startButton.addEventListener("click", function() {
-	// Set to stop button
-	startButton.classList.add("stop-button");
-	startButton.classList.remove("start-button");
-	startButton.innerHTML = "STOP";
-	startButton.addEventListener("click", function() {
-		startButton.innerHTML = "START";
-		startButton.classList.remove("stop-button");
-		startButton.classList.add("start-button");
-	});
+function getControl() {
+	return document.querySelector("#control");
+}
+let beatz;
+getControl().addEventListener("click", function() {
+	if (getControl().innerHTML == "START") {
+		// Set to STOP
+		getControl().classList.add("stop-button");
+		getControl().classList.remove("start-button");
+		getControl().innerHTML = "STOP";
 
-	// Get note text
-	let notes = Array.from(measures.children);
-	let notesText = [];
-	notes.forEach(e => notesText.push(e.firstChild.innerHTML));
+		// Get note text
+		let notes = Array.from(measures.children);
+		let notesText = [];
+		notes.forEach(e => notesText.push(e.firstChild.innerHTML));
+		
+		// Get note text index
+		let notesIndices = [];
+		notesText.forEach(e => notesIndices.push(sounds.indexOf(`${e}`)));
+
+		// Play notes
+		let tempoMultiplier = tempo / 60;
+		let timeInterval = 1000 / tempoMultiplier;
+
+		soundsAudio = document.querySelectorAll("audio");
+		let i=0
+		beatz = setInterval(function() {
+			soundsAudio.item(notesIndices[i]).currentTime = 0;
+			soundsAudio.item(notesIndices[i]).play();
+			console.log(i)
+			console.log(notesIndices.length - 1)
+			i++;
+			if (i==notesIndices.length) {
+				i = 0;
+			}
+		}, timeInterval);
+	} else {
+		// Set to Start
+		getControl().innerHTML = "START";
+		getControl().classList.remove("stop-button");
+		getControl().classList.add("start-button");
+
+		clearInterval(beatz);
+	}
+
 	
-	// Get note text index
-	let notesIndices = [];
-	notesText.forEach(e => notesIndices.push(sounds.indexOf(`${e}`)));
-
-	// Play notes
-	let tempoMultiplier = tempo / 60;
-	let timeInterval = 1000 / tempoMultiplier;
-
-	soundsAudio = document.querySelectorAll("audio");
-	let i=0
-	setInterval(function() {
-		soundsAudio.item(notesIndices[i]).currentTime = 0;
-		soundsAudio.item(notesIndices[i]).play();
-		console.log(i)
-		console.log(notesIndices.length - 1)
-		i++;
-		if (i==notesIndices.length) {
-			i = 0;
-		}
-		if (startButton.innerHTML == "START") clearInterval();
-	}, timeInterval);
 });
