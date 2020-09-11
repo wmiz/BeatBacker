@@ -1,1 +1,18 @@
 /* Skeleton */
+#measures {
+	border-style: solid;
+	min-height: 20vh;
+	margin-bottom: 5vh;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+.note-box {
+	min-height: 20vh;
+}
+
+#metronome {
+	border-style: solid;
+	min-height: 20vh;
+}
