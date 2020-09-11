@@ -1,11 +1,12 @@
 /* Skeleton */
 body {
 	background-color: #f5f1da;
+	font-family: arial;
 }
 
 #measures {
-	min-height: 50vh;
-	margin-bottom: 30vh;
+	min-height: 30vh;
+	margin-bottom: 20vh;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
@@ -13,7 +14,6 @@ body {
 }
 
 #extras {
-	min-height: 20vh;
 	margin-bottom: 30vh;
 	display: flex;
 	flex-direction: row;
@@ -41,6 +41,10 @@ button {
 	background-color: #7a9964;
 }
 
+#extras button:hover {
+	background-color: #7a9964;
+}
+
 .sound-dropdown-box {
 	display: none;
 	position: relative;
@@ -52,4 +56,11 @@ button {
 
 .extra {
 	min-height: 20vh;
+}
+
+#title {
+	text-align: center;
+	font-size: 48px;
+	background-color: #96bb7c;
+	color: white;
 }
