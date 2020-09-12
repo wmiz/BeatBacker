@@ -5,8 +5,6 @@ let sounds = ["Clap", "Hihat", "Kick", "Openhat", "Boom", "Ride", "Snare",
 const measures = document.querySelector("#measures");
 const extras = document.querySelector("#extras");
 
-let tempo = 180;
-
 let element;
 
 // Populate measure boxes
@@ -36,6 +34,33 @@ for (i=0;i<4;i++) {
 	measures.appendChild(outerDiv);
 }
 
+// Set up crement buttons
+const crements = document.querySelectorAll("#crements button");
+tempoBox = document.querySelector("input").value;
+crements.item(0).addEventListener( "click", function() {
+	document.querySelector("input").value = parseInt(document.querySelector("input").value) + 5;
+	checkTempo()
+});
+crements.item(1).addEventListener( "click", function() {
+	document.querySelector("input").value = parseInt(document.querySelector("input").value) + 1;
+	checkTempo()
+});
+crements.item(2).addEventListener( "click", function() {
+	document.querySelector("input").value = parseInt(document.querySelector("input").value) - 1;
+	checkTempo()
+});
+crements.item(3).addEventListener( "click", function() {
+	document.querySelector("input").value = parseInt(document.querySelector("input").value) - 5;
+	checkTempo()
+});
+
+function checkTempo() {
+	if (document.querySelector("input").value <= 0) {
+		document.querySelector("input").value = 1;
+	}
+}
+
+
 // Play sounds
 function getControl() {
 	return document.querySelector("#control");
@@ -58,7 +83,7 @@ getControl().addEventListener("click", function() {
 		notesText.forEach(e => notesIndices.push(sounds.indexOf(`${e}`)));
 
 		// Play notes
-		let tempoMultiplier = tempo / 60;
+		let tempoMultiplier = getTempo() / 60;
 		let timeInterval = 1000 / tempoMultiplier;
 
 		soundsAudio = document.querySelectorAll("audio");
@@ -66,8 +91,6 @@ getControl().addEventListener("click", function() {
 		beatz = setInterval(function() {
 			soundsAudio.item(notesIndices[i]).currentTime = 0;
 			soundsAudio.item(notesIndices[i]).play();
-			console.log(i)
-			console.log(notesIndices.length - 1)
 			i++;
 			if (i==notesIndices.length) {
 				i = 0;
@@ -82,5 +105,8 @@ getControl().addEventListener("click", function() {
 		clearInterval(beatz);
 	}
 
+	function getTempo() {
+		return document.querySelector("input").value;
+	}
 	
 });
