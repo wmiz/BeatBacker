@@ -1,5 +1,5 @@
 let sounds = ["Clap", "Hihat", "Kick", "Openhat", "Boom", "Ride", "Snare", 
-"Tom", "Tink"]
+"Tom", "Tink", "Rest"]
 
 // Get parents
 const measures = document.querySelector("#measures");
@@ -13,7 +13,7 @@ for (i=0;i<4;i++) {
 	outerDiv.classList.add("note-box");
 
 	element = document.createElement("button");
-	element.innerHTML = i + 1;
+	element.innerHTML = "Rest";
 	element.classList.add("top")
 
 	soundDiv = document.createElement("div");
@@ -89,8 +89,10 @@ getControl().addEventListener("click", function() {
 		soundsAudio = document.querySelectorAll("audio");
 		let i=0
 		beatz = setInterval(function() {
-			soundsAudio.item(notesIndices[i]).currentTime = 0;
-			soundsAudio.item(notesIndices[i]).play();
+			if (soundsAudio.item(notesIndices[i]) && soundsAudio.item(notesIndices[i]) != 9) {
+				soundsAudio.item(notesIndices[i]).currentTime = 0;
+				soundsAudio.item(notesIndices[i]).play();
+			}
 			i++;
 			if (i==notesIndices.length) {
 				i = 0;
